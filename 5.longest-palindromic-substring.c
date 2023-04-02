@@ -7,17 +7,22 @@
 
 // @lc code=start
 
+/*
+    一般来说，这道题首先想到的教科书式解法是动态规划，这里解法使用early-stop规则，内存占用也降低
+*/
+
 #include <string.h>
 
 char *longestPalindrome(char *s)
 {
+    short mlidx = 0, mridx = 0, lidx = 0, ridx = 0;
+    short length = strlen(s);
 
-    int length = strlen(s);
     if (length <= 1)
         return s;
     if (length == 2)
         return s[0] == s[1] ? s : s + 1;
-    int mlidx = 0, mridx = 0, lidx = 0, ridx = 0;
+
     for (int i = 1; i < length - 1; i++)
     {
         lidx = ridx = i;
